@@ -1,0 +1,58 @@
+﻿@model PLA.Communications.Database.DevTest
+
+@{
+    ViewBag.Title = "Details";
+    Layout = null;
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>DevTest</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CampaignName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CampaignName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Date)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Clicks)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Clicks)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Conversions)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Conversions)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Impressions)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Impressions)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AffiliateName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AffiliateName)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

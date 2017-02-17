@@ -1,0 +1,78 @@
+﻿<style>
+    .highlightigz {
+        background-color: #FFCCCC;
+        font-weight: bold;
+    }
+
+    .this-class-is-added-by-automated-search {
+        background-color: #FFCCCC;
+    }
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script language="javascript" type="text/javascript">
+    var whole_str = '';
+    var str_parts = new Array();
+
+    var selected = false;
+    var length = false;
+    $(document).ready(function () {
+        if (!$('.this-class-is-added-by-automated-search').length) {
+            $('body *:not(script)').each(function (i) {
+                var text = $(this).text();
+                if (text.indexOf(whole_str) > -1) {
+                    if (!selected) {
+                        selected = this;
+                        length = text.length;
+                    }
+                    else
+                        if (length > text.length) {
+                            selected = this;
+                            length = text.length;
+                        }
+                }
+            });
+            if (selected) {
+                var text = $(selected).text();
+                $(selected).html(text.replace(whole_str, '<b class="highlightigz">' + whole_str + '</b>'));
+            }
+
+            ////////////////////////////
+
+            if (!$('.highlightigz').length) {
+                str_parts = [];
+                if (str_parts.length > 0) {
+                    for (j = 0; j < str_parts.length; j++) {
+                        //alert(str_parts[j]);
+                        //str_parts[j]=str_replace("’","�",str_parts[j]);
+                        str_parts[j] = str_parts[j].replace("&#39;", "'");
+
+                        var selected = false;
+                        var length = false;
+                        $('body *:not(script)').each(function (i) {
+                            var text1 = $(this).text();
+                            if (text1.indexOf(str_parts[j]) > -1) {
+                                if (!selected) {
+                                    selected = this;
+                                    length = text1.length;
+                                }
+                                else
+                                    if (length > text1.length) {
+                                        selected = this;
+                                        length = text1.length;
+                                    }
+                            }
+                        });
+                        if (selected) {
+                            var text1 = $(selected).text();
+                            $(selected).html(text1.replace(str_parts[j], '<b class="highlightigz">' + str_parts[j] + '</b>'));
+                        }
+                    }
+                }
+            }
+            /////////////////////////////
+        }
+        var str = document.getElementById("demo").innerHTML;
+        var res = str.replace(str, '<b>' + str + '</b>');
+        document.getElementById("demo").innerHTML = res;
+    });
+</script>

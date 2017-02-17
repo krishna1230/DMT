@@ -1,0 +1,96 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+@font-face{ 
+			font-family:Roboto-Regular;
+			src:url(../font/Roboto-Regular.ttf);
+	}
+
+body{background:#ffffff; font-family:Roboto-Regular;}
+header{border-bottom:2px solid #5db0c6;}
+.logo{width:auto; float:left; font-family:Myriad Pro; font-size:38px; color:#212121; margin:20px 10px; text-align:left;}
+.logo > span{display:inline-block; float:right; margin-top:19px; }
+.checker{float:left; width:auto; font-size:17px; font-family:Roboto-Regular;}
+.nav{width:auto; float:left;}
+.nav > ul > li:after{content:""; height:20px; width:1px; background:#eee; position:absolute; top:40px; right:-1px; z-index:3333;}
+.nav > ul{width:auto; float:left; margin:0px; padding:0px; display:block;}
+.nav > ul > li{display:inline-block; position:relative; line-height:97px; float:left; margin-right:1px;}
+.nav > ul > li > a {display:block; color:#6f6f6f; font-family:Roboto-Regular; font-size:14px; padding:0px 10px;}
+.nav > ul > li > a:hover{text-decoration:none; color:#FFF; background:#5db0c6;}
+.search{width:auto; float:left;  margin-top:38px; padding-left:5px;}
+.search >a{display:inline-block; border:none; padding:0px 5px; color:#333;}
+.search >a:hover{color:#5db0c6;}
+
+.search_button{float:right; background:#5fb565; padding:10px 12px;}
+.clear_button{float:right; background:#5fb565; padding:10px 12px;}
+
+.section_first{width:100%; float:left; background:#f5f5f5; margin:10px auto;}
+.section_write{width:100%; float:left; font-family:Roboto-Regular; font-size:18px; color:#212121; padding:15px 15px; }
+.text_box{width:100%; float:left; padding:15px;}
+.text_box > textarea{resize:none; padding: 10px 15px;}
+.side_bar{width:100%; float:left; padding-top:10px;}
+.side_bar > .img{width:100%;}
+
+.button_search1 {  width:100%;  float: left; }
+.main_box_search{width:100%; float:left; margin:10px 0px; padding-bottom: 20px;    border-bottom: 1px solid #ddd;}
+.first_text{width:auto; float:left; color:#5db0c6; padding-left:25px; }
+.last_text{width:auto; float:right; color:#5db0c6; padding-right:25px; }
+.button_search{    width: 100%;    float: left;    margin: 10px 0;    text-align: right; padding-right:25px;}
+	
+	.btn_serach{    background: #5fb565;  color: #fff;  padding: 5px 30px;  font-size: 16px;}
+	.btn_serach:hover{background:#368b3c; color: #fff;}
+	.btn_clear{    background: #e0e0e0;    color: #757575;  padding: 5px 30px;  font-size: 16px;}
+	.btn_clear:hover{background:#b5b1b1;}
+.advertise{float:left; width:100%; margin:10px 0px;}
+.img1{width:100%; float:left}
+.img1 > img {width:100%;}
+.section_write1{ position:relative; width:100%; float:left; background:#f5f5f5; padding:15px; font-size:18px; font-family:Roboto-Regular; font-weight:bold; color:#212121;}
+.section_write1:after{position:absolute; content:""; width:17%; left:-17%; height:100%; background:#f5f5f5; top:0;}
+.heading1{width:100%; float:left; color:#5db0c6; font-size:18px; font-family:Myriad Pro; text-decoration:underline;}
+.sub_paragraph{width:100%; float:left; color:#9e9e9e; font-size:14px; font-family:Myriad Pro; padding:15px 0px;}
+.link1{color:#5fb565; float:left; font-family:Myriad Pro; text-decoration:underline; font-size:12px; margin-bottom:5px;}
+button_search1{width:auto; float:left;}
+.sub_paragraph1{width:100%; float:left; color:#9e9e9e; font-size:12px; font-family:Myriad Pro; padding-top:15px;}
+.social_media{width:100%; float:left; text-align:center; font-family:Myriad Pro; font-size:14px; font-weight:bold; padding-top:40px;}
+.social-icon > ul{width:100%; float:left; margin:0px; padding:0px; display:block; text-align:center; font-size:25px;}
+.social-icon > ul > li{display:inline-block; padding:10px 10px; margin:10px auto; }
+.social-icon {
+    float: right;
+    padding: 2px 54px;
+}
+.social-icon > ul > li > a{color:#000; font-size:20px;}
+.social-icon > ul > li > a:hover{color:#368b3c;}
+.footer_page {
+    background: #24272e none repeat scroll 0 0;
+    color: #fff;
+    float: left;
+    text-align: center;
+    width: 100%;
+}
+.first {
+    color: #fff;
+    float: left;
+    font-family: Myriad Pro;
+    font-size: 12px;
+    padding: 32px 0px;
+}
+.second{float:right; color:#fff; padding-left:25px; font-size:12px; font-family:Myriad Pro;}
+
+
+.heading1 > a{color:#5db0c6;}
+.heading1 > a:hover{color:#4295ab;}
+
+.link1 > a{color:#5fb565;}
+.link1 > a:hover{color:#368b3c;}
+.col-lg-12.col-xs-12.formbox {
+    border: 1px solid #5db0c6;
+}
+.button_search.middle {
+  
+    text-align: center;
+}
+.section_write.new {
+    background: #5db0c6 none repeat scroll 0 0;
+    color: #fff;
+    text-align: center;
+}

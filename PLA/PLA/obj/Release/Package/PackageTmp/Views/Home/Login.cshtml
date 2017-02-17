@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-lg-8">
+    <div class="section_write new">Login </div>
+    <div class="col-lg-12 col-xs-12 formbox">
+        @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { id = "FRM" }))
+        {
+           // @ViewBag.name
+            <div class="text_box">
+                <span>UserName</span> <input name="UserName" type="text" class="form-control" placeholder="example@gmail.com" required />
+            </div>
+            <div class="text_box">
+                <span>Password</span> <input name="Password" type="password" class="form-control" placeholder="Password" required />
+
+            </div>          
+            <div class="button_search middle">
+                <button type="submit" class="btn btn_serach">Submit</button>
+            </div>
+
+        }
+    </div>
+    <div class="advertise">
+        <div class="img1"><img src="~/image/2.png" alt="img" /></div>
+    </div>
+
+
+
+
+
+</div>

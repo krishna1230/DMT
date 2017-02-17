@@ -1,0 +1,150 @@
+﻿@model PLA.Data.LoginAdminData
+
+@{
+    ViewBag.Title = "AdminRegistration";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<script src="~/Scripts/jquery-1.8.2.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#adminlist").load('AdminList');
+
+    });
+    function show(input) {
+        if (input.files && input.files[0]) {
+            var filerdr = new FileReader();
+            filerdr.onload = function (e) {
+                $('#user_img').attr('src', e.target.result);
+            }
+            filerdr.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Admin Registration
+
+    </h1>
+    <ol class="breadcrumb">
+        <li>
+            <a href="#"><i class="fa fa-dashboard"></i> Dashboard</a>
+        </li>
+
+        <li class="active"> Admin Registration</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Admin Registration</h3>
+                </div>
+                <!-- /.box-header -->
+                @using (Html.BeginForm("AdminRegistration", "Login", FormMethod.Post, new { id = "FRM", enctype = "multipart/form-data" }))
+                {
+               
+                    @Html.ValidationSummary(true)
+
+                    <div class="box-body">
+                        <div class="row">                           
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputFile">Name</label>
+                                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Name" })
+                                    @Html.ValidationMessageFor(m => m.Name)
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputFile">Email Id</label>
+                                    @Html.TextBoxFor(m => m.EmailId, new { @class = "form-control", placeholder = "Email Id" })
+                                    @Html.ValidationMessageFor(m => m.EmailId)
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputFile">Contact No</label>
+                                    @Html.TextBoxFor(m => m.ContactNo, new { @class = "form-control", placeholder = "Contact No" })
+                                    @Html.ValidationMessageFor(m => m.ContactNo)
+                                </div>
+                            </div>
+                        </div>
+                        @if (Model == null)
+                        {
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputFile">Password</label>
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+
+                                    @Html.ValidationMessageFor(m => m.Password)
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputFile">Confirm Password</label>
+                                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm Password" })
+
+                                    @Html.ValidationMessageFor(m => m.ConfirmPassword)
+
+                                </div>
+                            </div>
+                        </div>
+                        }
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputFile">Upload Image</label>
+
+                                    <input type="file" name="AdminPhoto" onchange="show(this)" />
+
+
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                @if (Model != null)
+{
+                                <img id="user_img" height="100" width="90" src="@Model.AdminImage" />
+}
+else
+{            <img id="user_img" height="100" width="90" />
+                                }
+                            </div>
+                        </div>
+                    </div>
+                        <!-- /.box-body -->
+                    <div class="box-footer">
+                        <button type="reset" class="btn btn-primary">Reset</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                }
+            </div>
+            <!-- /.box -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Admin List</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body" id="adminlist">
+
+                </div>
+                <!-- /.box-body -->
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->

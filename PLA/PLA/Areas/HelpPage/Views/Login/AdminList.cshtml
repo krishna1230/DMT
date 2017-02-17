@@ -1,0 +1,52 @@
+﻿@model List<PLA.Data.LoginAdminData>
+<table id="example1" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th></th>
+           
+            <th>Admin Name</th>
+            <th>Email Id</th>
+            <th>Contact No</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td><img height="35" width="35" src="@item.AdminImage" /></td>
+                
+                <td>@item.Name</td>
+                <td>@item.EmailId</td>
+                <td>@item.ContactNo</td>
+                <td>@item.CreatedDate.Value.ToShortDateString()</td>
+                <td>
+                    @if (item.Status == true)
+                    {
+                        <a href="../Login/EditStatus?Id=@item.Id"> <span class="label label-warning">Active</span></a>
+                    }
+                    else
+                    {
+                        <a href="../Login/EditStatus?Id=@item.Id"> <span class="label label-primary">Deactive</span></a>
+                    }
+                </td>
+                <td>
+                    <a href="../Login/EditAdmin?Id=@item.Id">
+                        <i class="fa fa-fw fa-edit">
+                        </i>
+                    </a>
+                    <a href="../Login/DeleteAdmin?Id=@item.Id" onclick="return confirm('Are you sure you wish to delete this Admin ?');">
+                        <i class=" fa fa-fw fa-remove">
+                        </i>
+                    </a>
+                </td>
+            </tr>
+        }
+
+
+    </tbody>
+
+</table>

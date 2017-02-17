@@ -1,0 +1,182 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Angular JS</title>
+   
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.2/angular-sanitize.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+
+</head>
+<body ng-app="myapp">
+    <div ng-controller="myctrl" ng-init="">
+        <p>{{myurl}}</p>        
+  
+        <div ng-show="myswitch">
+            <ul>
+                <li ng-repeat="x in customer">
+                    {{$index+1 + ". "+ x.Name + ' - ' + x.Email}}
+                </li>
+            </ul>
+            @*<p ng-bind-html="Htmlpage"></p>*@
+            <p>Status : {{statuscode}}</p>
+            <p>StatusText : {{statustext}}</p>
+            <p>{{timeouttext}}</p>
+            <p>{{time}}</p>
+        </div>
+        @*<select ng-model="selectedcutomer">
+            
+            <option ng-repeat="x in customer" value="{{x.FirstName}}">{{x.LastName}}</option>
+        </select>
+        <p ng-bind="selectedcutomer"></p>*@
+      
+        <button ng-disabled="myswitch">Clik me!</button>
+        <input type="checkbox" ng-model="myswitch"/>butn
+        <label ng-click="clickMe()">Click Me!</label>.
+
+        <input type="radio" ng-model="myRadio" value="Dogi" />Dogiii 
+        <input type="radio" ng-model="myRadio" value="Kute" />Kuteee
+        <input type="radio" ng-model="myRadio" value="Bhesh" />Bhneshhhh 
+        <select ng-model="myRadio">
+            <option>Dogi</option>
+            <option>Kute</option>
+            <option>Bhesh</option>
+        </select>
+        <div ng-switch="myRadio">
+            <div ng-switch-when="Dogi">
+                <h1>Dogiiiiiii</h1>
+            </div>
+            <div ng-switch-when="Kute">
+                <h1>Kutttteeeeeeeee</h1>
+            </div>
+            <div ng-switch-when="Bhesh">
+                <h1>Bheeeeeeeshhhhhhhhhhhhh</h1>
+            </div>
+        </div>
+        <hr />
+        
+            <input type="text" ng-model="user.firstName"><br>
+            Last Name:<br>
+            <input type="text" ng-model="user.lastName">
+            <br><br>
+            <button ng-click="reset()">Submit</button>
+       
+        {{user}}
+        @*<div ng-include="'http://www.w3schools.com/angular/angular_includes.asp'"></div>*@
+
+        <input type="checkbox" ng-model="hidechk" /> Hide me
+        <div ng-hide="hidechk"></div>
+        <ul>
+            <li ng-repeat="x in products">{{x}}<span ng-click="removeItem($index)">&times;</span></li>
+        </ul>
+        <input type="text" ng-model="txtpro" /> 
+        <button ng-click="AddProduct()">Submit</button>
+
+        <p>{{errortext}}</p>
+        <p><a href="#/">Main</a></p>
+
+        <a href="#red">Red</a>
+        <a href="#green">Green</a>
+        <a href="#blue">Blue</a>
+
+        <div ng-view></div>
+    </div>
+    <script>
+        var app = angular.module('myapp', ['ngRoute', 'ngSanitize']);
+
+        app.controller('myctrl', function ($scope,$location,$http,$timeout,$interval,myApi) {
+            $scope.myurl = $location.absUrl();
+            $scope.myswitch = true;
+            $scope.products = ["Milk", "Bread", "Cheese"];
+            $scope.AddProduct = function () {
+                $scope.errortext = "";
+             //   if (!$scope.txtpro) { return; }
+                if ($scope.products.indexOf($scope.txtpro) == -1) {
+                    $scope.products.push($scope.txtpro);
+                }
+                else {
+                    $scope.errortext = "Item alreay added !";
+                }
+            };
+            $scope.removeItem = function (x) {
+                $scope.products.splice(x, 1);
+            };
+            $scope.clickMe = function () {
+                $scope.myswitch = !$scope.myswitch;
+            };
+
+            $scope.reset = function () {
+                $scope.user = $scope.user;
+            };
+            // Method : 1
+
+            $http.get('http://localhost:9000/registration').then(function (data) {
+                $scope.customer = data.data;
+            });    
+
+            //myApi.GetAllRegistartion().then(function (emp) {
+            //    $scope.customer = emp.data;
+            //});
+
+            //Str.then(function (emp) {
+            //    $scope.customer = emp.data;
+            //});
+
+            // Method : 2
+
+            $http({
+                method: 'GET',
+                url: 'http://localhost:54854/Home/Angularpage'
+            }).then(function Success(response) {
+                $scope.Htmlpage = response.data;            
+                $scope.statuscode = response.status;
+                $scope.statustext = response.statustext;
+            }, function Error(response) {
+                $scope.Htmlpage = response.data;
+            });
+
+            $timeout(function () {
+                $scope.timeouttext = "Hiii This is timeout......."
+            }, 3000);
+
+            $interval(function () {
+                $scope.time = new Date().getSeconds();
+            }, 1000);
+           
+        });
+        //app.config(function ($sceDelegateProvider) {
+        //    $sceDelegateProvider.resourceUrlWhitelist([
+        //        'http://www.refsnesdata.no/**'
+        //    ]);
+        //});
+        app.service('myApi', function ($http) {
+            this.GetAllRegistartion = function () {
+                return $http.get('/Api/PLAApi/GetAllRegistartion');
+            };
+        });
+
+        app.config(function ($routeProvider) {
+            $routeProvider
+            .when("/#", {
+                templateUrl: "Angularpage"
+            })
+            .when("/red", {
+                templateUrl: "CompareText"
+            })
+            .when("/green", {
+                templateUrl: "Testpage"
+            })
+            .when("/blue", {
+                templateUrl: "Login"
+            });
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Angular JS</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+</head>
+<body>
+    <div ng-app="myapp"  >
+        <p style="color:{{color}};font-size:14px;"> app.run(function ($rootScope) { $rootScope.name = "Root Name.....";});</p>
+        {{name | uppercase}}
+        <div ng-controller="myCtrl">
+            <p style="color:{{names[2].name}};font-size:14px;">ng-model ,ng-init and ng-bind uses.</p>
+            <p style="color:{{color}};font-size:14px;">  $scope.name = 'This is controller Name......';</p>
+            Name : <input ng-model="name" /><br />
+            <h1 ng-bind="name">  </h1>
+            {{5 + 5}}
+            <hr />
+            <p style="color:{{names[2].name}};font-size:14px;">ng-directive use</p>
+            <pre style="color:{{color}};font-size:14px;">
+       app.directive("w3Directive", function () {
+            return {
+                restrict : "E",
+                template: "This is directivvve testing............"
+            };
+        });
+        app.directive('sun', function () {
+            return {
+              
+                template:'This is sun demo'
+            };
+        });
+</pre>
+       <div class="sun">
+
+            </div>
+            <sun></sun>
+            <!-- directive: sun -->
+            <hr />
+            <p style="color:{{names[2].name}};font-size:14px;">ng-repeat uses</p>
+            <input type="text" ng-model="test">
+            <p><label ng-click="order('name')">Name</label>   <label ng-click="order('country')">COuntry</label></p>
+            <ul>
+                <li ng-repeat="x in names | orderBy:myorder | filter:test">
+                    {{x.name + ' ,' + x.country}}
+                </li>
+            </ul>
+
+            <hr />
+            <p style="color:{{names[2].name}};font-size:14px;">ng-clcik with functuin using contoller</p>
+
+            <p ng-click="getname()">Get Name : {{gotname}}</p>
+
+            <p>{{getnameload()}}</p>
+            <hr />
+        </div>
+        {{name | lowercase}}
+    </div>
+    <script>
+        var app = angular.module('myapp', []);
+        // Root Scope
+        app.run(function ($rootScope) {
+            $rootScope.name = "Root Name.....";
+            $rootScope.color = "gray";
+        });
+        //controller
+        app.controller('myCtrl', function ($scope) {
+            $scope.name = 'This is controller Name......';
+            $scope.getname = function () {
+                $scope.gotname = "May name is shktiman";
+            };
+            $scope.getnameload = function () {
+                return "May name is shktiman";
+            };
+            $scope.order = function (x) {
+                $scope.myorder = x;
+            };
+            $scope.names = [
+              { name: 'Jani', country: 'Norway' },
+              { name: 'Hege', country: 'Sweden' },
+              { name: 'red', country: 'sunnh' },
+               { name: 'Carl', country: 'Sweden' },
+        { name: 'Margareth', country: 'England' },
+        { name: 'Hege', country: 'Norway' },
+        { name: 'Joe', country: 'Denmark' },
+        { name: 'Gustav', country: 'Sweden' },
+        { name: 'Birgit', country: 'Denmark' },
+        { name: 'Mary', country: 'England' },
+        { name: 'Kai', country: 'Norway' }
+            ];
+        });
+
+        // Directives
+        //app.directive("w3Directive", function () {
+        //    return {
+        //        template: "This is directivvve testing............"
+        //    };
+        //});
+        app.directive('sun', function () {
+            return {
+              
+                template:'This is sun demo'
+            };
+        });
+
+        // Ng-click event
+        
+    </script>
+</body>
+</html>

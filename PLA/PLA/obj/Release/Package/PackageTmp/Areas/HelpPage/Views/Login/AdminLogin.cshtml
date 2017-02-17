@@ -1,0 +1,46 @@
+﻿@model PLA.Data.AdminLoginModel
+
+@{
+    ViewBag.Title = "AdminLogin";
+    Layout = "~/Views/Shared/_LayoutAdminLogin.cshtml";
+}
+@using (Html.BeginForm("AdminLogin", "Login", FormMethod.Post, new { id = "FRM", enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    <div class="login-box-body">
+
+        <p class="login-box-msg">Sign in to start your session</p>
+      
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.EmailId, new { @class = "form-control", placeholder = "Email" })
+               
+                        @Html.ValidationMessageFor(m => m.EmailId)
+                    
+            </div>
+            <div class="form-group">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+               
+                        @Html.ValidationMessageFor(m => m.Password)
+                   
+            </div>
+        <div class="col-md-12">
+            <div class="col-md-8">
+                <div class="checkbox icheck">
+                    <label>
+                        @Html.CheckBox("remember_me") Remember Me
+                        @*<input type="checkbox" name="remember_me"> Remember Me*@
+                    </label>
+                </div>
+            </div>
+            <!-- /.col -->
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+            </div>
+            <!-- /.col -->
+        </div>
+        <div class="">
+            <a href="../Login/ForgotPassword">I forgot my password</a>
+            <br>
+        </div>
+        </div>
+}

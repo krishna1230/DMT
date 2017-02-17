@@ -1,0 +1,87 @@
+﻿@model PLA.Models.PlagiarismData
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+    function countWords() {
+
+        var saved_text = $.trim($('#txtText').val());
+        //saved_text = saved_text.replace(/[<p>]/g, " ");
+        //saved_text = saved_text.replace(/[</p>]/g, " ");
+        saved_text = saved_text.replace(/\s+/g, " ");
+        //saved_text = saved_text.replace(/[ ]{2,}/gi," ");
+        saved_text = saved_text.replace(/\n /, " ");
+        //saved_text = saved_text.replace(/(^\s*)|(\s*$)/gi,"");
+        //saved_text = saved_text.replace(/^\s+|\s+$/g,"");
+        //saved_text = removeHTMLTags(saved_text);
+        //result = saved_text.split("  ");
+        //alert(saved_text+"\n\n\n"+result);
+        if (saved_text == "") {
+            document.getElementById('word-count').innerHTML = "0";
+        }
+        else {
+            document.getElementById('word-count').innerHTML = saved_text.split(' ').length;
+        }
+
+    }
+    $(document).ready(function () {
+        countWords();
+    });
+</script>
+
+<div class="col-lg-8">   
+            <div class="col-lg-12 col-xs-12">
+                <div class=""> Please Enter Your Text Below </div>
+            </div>
+  
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { name = "search_form" }))
+    {
+        <div class="text_box">
+            @Html.TextAreaFor(m => m.st, new { @class = "form-control", rows = "12", id = "txtText", required = "", onkeydown = "countWords();", onkeyup = "countWords();" })
+            @*<textarea class="form-control" rows="12" id="comment"></textarea>*@
+        </div>
+        <input type="hidden" name="num" value="0" />
+        <div class="first_text">Limit : Maximum 1000 words limit per search.</div>
+        <div class="last_text">Total Words: <span id="word-count"></span></div>
+        <div class="button_search">
+            <button type="submit" class="btn btn_serach">Search</button>
+            <button type="button" class="btn  btn_clear">Clear</button>
+        </div>
+    }
+
+    <div class="advertise">
+        <div class="img1"><img src="~/image/2.png" alt="img" /></div>
+    </div>
+
+
+    @if (Model != null)
+    {
+        if (Model.actual_results != null)
+        {
+            <div class="section_write1"> @Model.actual_results.Count() results found for your given content. </div>
+            foreach (var item in Model.actual_results)
+            {
+                <form id="somelink" action="Home/CompareText" method="post" target="_blank">
+                    <input name="url" type="hidden" value="@item.url" />
+                    <input name="st" type="hidden" value="@item.st" />
+                    <div class="main_box_search">
+                        <div class="heading1"><a href="@item.url" target="_blank"> @item.title </a> </div>
+                        <div class="sub_paragraph">
+                            @Html.Raw(item.content)
+                        </div>
+                        <div class="link1"><a href="@item.url" target="_blank">@item.url</a></div>
+                        <div class="button_search1">
+                            <button type="submit" class="btn btn_serach ">Compare Text</button>
+                        </div>
+                    </div>
+                </form>
+            }
+        }
+        else
+        {
+            <div class="section_write1" style="color: #5fa256; "> No Plagiarism Found! </div>
+        }
+    }
+
+
+</div>

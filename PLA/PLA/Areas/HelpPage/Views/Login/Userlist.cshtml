@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "Userlist";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model List<PLA.Data.RegistrationData>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        User List
+
+    </h1>
+    <ol class="breadcrumb">
+        <li>
+            <a href="#"><i class="fa fa-dashboard"></i> Dashboard</a>
+        </li>
+
+        <li class="active">   User List</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">          
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">  User List</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>                         
+                                <th>UserName</th>
+                                <th>Name</th>                                
+                                <th>Email</th>
+                                <th>Date</th>
+                                <th>Status</th>                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>                                  
+                                    <td>@item.UserName</td>
+                                    <td>@item.FirstName @item.LastName</td>
+                                    <td>@item.Email</td>
+                                    <td>@String.Format("{0:dd MMM yyyy}",item.Date)</td>
+                                    <td>
+                                        @if (item.Status == true)
+                                        {
+                                            <a href="#"> <span class="label label-warning">Active</span></a>
+                                        }
+                                        else
+                                        {
+                                            <a href="#"> <span class="label label-primary">Deactive</span></a>
+                                        }
+                                    </td>                                  
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /.row -->
+</section>
+

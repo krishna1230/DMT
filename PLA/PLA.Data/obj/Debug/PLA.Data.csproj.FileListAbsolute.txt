@@ -1,0 +1,14 @@
+D:\Desktop Application\PLA\PLA.Data\bin\Debug\PLA.Data.dll.config
+D:\Desktop Application\PLA\PLA.Data\bin\Debug\PLA.Data.dll
+D:\Desktop Application\PLA\PLA.Data\bin\Debug\PLA.Data.pdb
+D:\Desktop Application\PLA\PLA.Data\bin\Debug\Newtonsoft.Json.dll
+D:\Desktop Application\PLA\PLA.Data\bin\Debug\System.Net.Http.Formatting.dll
+D:\Desktop Application\PLA\PLA.Data\bin\Debug\System.Web.Http.dll
+D:\Desktop Application\PLA\PLA.Data\bin\Debug\System.Web.Http.WebHost.dll
+D:\Desktop Application\PLA\PLA.Data\bin\Debug\Newtonsoft.Json.xml
+D:\Desktop Application\PLA\PLA.Data\bin\Debug\System.Net.Http.Formatting.xml
+D:\Desktop Application\PLA\PLA.Data\bin\Debug\System.Web.Http.xml
+D:\Desktop Application\PLA\PLA.Data\bin\Debug\System.Web.Http.WebHost.xml
+D:\Desktop Application\PLA\PLA.Data\obj\Debug\PLA.Data.dll
+D:\Desktop Application\PLA\PLA.Data\obj\Debug\PLA.Data.pdb
+D:\Desktop Application\PLA\PLA.Data\obj\Debug\PLA.Data.csprojResolveAssemblyReference.cache

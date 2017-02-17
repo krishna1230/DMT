@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model PLA.Data.RegistrationData
+<script src="~/css/validation.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#confirmpassword").keyup(function () {
+            var password = $("#newpassword").val();
+            var confirmpassword = $("#confirmpassword").val();
+            if (password == confirmpassword) {
+                $("#disp1").html("<span style='color:green;'>Password Match</span>");
+                $('#confirm').val(confirmpassword);
+            }
+            else {
+                $("#disp1").html("<span style='color:red;'>Password Not Match</span>");
+                $('#confirm').val("");
+            }
+        });
+
+    });
+
+</script>
+<div class="col-lg-8">
+    <div class="section_write new">Registration </div>
+    <div class="col-lg-12 col-xs-12 formbox">
+
+
+        @using (Html.BeginForm("Registration", "Home", FormMethod.Post, new { id = "FRM" }))
+        {
+
+            <div class="text_box">
+                <span>UserName</span> @Html.TextBoxFor(m => m.UserName, new { @class = "form-control required", placeholder = "ex. smith27" })
+            </div>
+            <div class="text_box">
+                <span>First Name</span> @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control required", placeholder = "Enter Firstname" })
+
+            </div>
+            <div class="text_box">
+                <span>Last Name</span>@Html.TextBoxFor(m => m.LastName, new { @class = "form-control required", placeholder = "Enter Lastname" })
+            </div>
+            <div class="text_box">
+                <span>Email</span>
+                <input type="email" class="form-control required" name="Email" />
+            </div>          
+            <div class="text_box">
+                <span>Password</span>@Html.PasswordFor(m => m.Password, new { @class = "form-control required", placeholder = "Enter Password", Id = "newpassword" })
+            </div>
+            <div class="text_box">
+
+                <span>Confirm</span>@Html.PasswordFor(m => m.Confirmpassword, new { @class = "form-control required", placeholder = "Enter Confirm Password", Id = "confirmpassword" })
+                <input type="hidden" id="confirm" class="required" />
+                <span id="disp1"></span>
+                <br />
+            </div>
+            <div class="button_search middle">
+                <button type="submit" class="btn btn_serach">Submit</button>
+            </div>
+
+        }
+    </div>
+    <div class="advertise">
+        <div class="img1"><img src="~/image/2.png" alt="img" /></div>
+    </div>
+
+
+
+
+
+</div>
+
+
+

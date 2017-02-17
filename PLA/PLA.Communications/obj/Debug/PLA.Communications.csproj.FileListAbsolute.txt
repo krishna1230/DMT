@@ -1,0 +1,8 @@
+D:\Desktop Application\PLA\PLA.Communications\bin\Debug\PLA.Communications.dll.config
+D:\Desktop Application\PLA\PLA.Communications\bin\Debug\PLA.Communications.dll
+D:\Desktop Application\PLA\PLA.Communications\bin\Debug\PLA.Communications.pdb
+D:\Desktop Application\PLA\PLA.Communications\bin\Debug\EntityFramework.dll
+D:\Desktop Application\PLA\PLA.Communications\bin\Debug\EntityFramework.xml
+D:\Desktop Application\PLA\PLA.Communications\obj\Debug\PLA.Communications.dll
+D:\Desktop Application\PLA\PLA.Communications\obj\Debug\PLA.Communications.pdb
+D:\Desktop Application\PLA\PLA.Communications\obj\Debug\PLA.Communications.csprojResolveAssemblyReference.cache

@@ -1,0 +1,62 @@
+﻿@model PLA.Communications.Database.DevTest
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = null;
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>DevTest</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CampaignName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CampaignName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Date)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Clicks)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Clicks)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Conversions)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Conversions)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Impressions)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Impressions)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AffiliateName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AffiliateName)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

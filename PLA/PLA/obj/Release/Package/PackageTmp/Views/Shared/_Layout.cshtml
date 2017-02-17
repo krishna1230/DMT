@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <!---bootstrap link -->
+    <link rel="stylesheet" type="text/css" href="~/bootsrap/bootstrap-3.3.7-dist/css/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="~/bootsrap/bootstrap-3.3.7-dist/css/bootstrap.css" />
+    @*<script src="~/bootsrap/bootstrap-3.3.7-dist/js/bootstrap.js"></script>*@
+
+    <!---my css-->  
+    <link rel="stylesheet" type="text/css" href="~/css/stylesheet3.css" />
+
+    <!---font css--->
+    <link rel="stylesheet" type="text/css" href="~/font/css/font-awesome.css" />
+    <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+  
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="col-lg-3 col-md-3">
+                <div class="logo"> Plagiarism <span class="checker">checker</span> </div>
+            </div>
+            <div class="col-lg-7 col-md-8 pull-right">
+                <div class="nav">
+                    <ul>
+                        <li><a href="#">Home</a></li>                    
+                        <li><a href="#">About Us</a></li>                     
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        @if (Session["Name"] != null)
+                        { 
+                             <li><a href="#"><i class="fa fa-user"></i> Welcome, @Session["Name"].ToString()</a></li>
+                            <li><a href="~/Home/Signout"><i class="fa fa-sign-out"></i> Logout</a></li>
+                        }
+                        else
+                        { 
+                        <li><a href="~/Home/Login"><i class="fa fa-sign-in"></i> Login</a></li>
+                        }
+                    </ul>
+                </div>
+                @*<div class="search">
+                    <a href="#">Sign in</a>
+                    <a href="#">Sign up</a>
+                </div>*@
+            </div>
+            </div>
+    </header>
+
+
+    <section class="section_first">
+        @*<div class="container">
+            <div class="col-lg-12 col-xs-12">
+                <div class="section_write"> Please Enter Your Text Below </div>
+            </div>
+        </div>*@
+    </section>
+
+    <section>
+        <div class="container">
+            <!--Main 8-->
+            @RenderBody()
+            <!--Main 4-->
+            <div class="col-lg-4">
+                <div class="side_bar">
+                    <div class="img"><img src="~/image/1.png" alt="advertisement" /></div>
+                    <div class="img_adver"><img src="~/image/4.png" alt="image" /></div>
+                    <div class="img_adver"><img src="~/image/3.png" alt="image" /><img src="~/image/5.png" alt="image1" /></div>
+                </div>
+
+            </div>
+            </div>
+    </section>
+
+
+    <footer class="footer_page">
+        <div class="container">
+
+            <div class="first">
+                <strong>Copyright &copy; 2016-2017 <a href="http://www.dmkgroups.in/dmkgroups/" target="_blank">DMK TECHNOLOGIES PRIVATE LIMITED</a>.</strong> All rights
+                reserved.
+            </div>
+            <div class="social-icon">
+                <ul>
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
